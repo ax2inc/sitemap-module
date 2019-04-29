@@ -30,7 +30,7 @@
 ```
 > **notice:** If you use other modules (eg. `nuxt-i18n`), always declare the sitemap module at end of array (eg. `modules: ['nuxt-i18n', '@nuxtjs/sitemap']`)
 
-- Configure it:
+- Configure it for a single sitemap:
 
 ```js
 {
@@ -53,6 +53,54 @@
         lastmodISO: '2017-06-30T13:30:00.000Z'
       }
     ]
+  }
+```
+
+- Or configure it for a several sitemaps: (adding the path for each one)
+
+```js
+{
+  modules: [
+    '@nuxtjs/sitemap'
+  ],
+  sitemap: [
+    {
+      path: 'sitemap1.xml',
+      hostname: 'https://example.com',
+      gzip: true,
+      exclude: [
+        '/secret',
+        '/admin/**'
+      ],
+      routes: [
+        '/page/1',
+        {
+          url: '/page/2',
+          changefreq: 'daily',
+          priority: 1,
+          lastmodISO: '2017-06-30T13:30:00.000Z'
+        }
+      ]
+    },
+    {
+      path: 'sitemap2.xml',
+      hostname: 'https://example.com',
+      gzip: true,
+      exclude: [
+        '/secret',
+        '/admin/**'
+      ],
+      routes: [
+        '/page/1',
+        {
+          url: '/page/2',
+          changefreq: 'daily',
+          priority: 1,
+          lastmodISO: '2017-06-30T13:30:00.000Z'
+        }
+      ]
+    }
+  ]
   }
 ```
 
