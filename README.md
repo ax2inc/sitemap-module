@@ -12,30 +12,32 @@
 
 ## Features
 
-- Module based on the awesome **[sitemap.js](https://github.com/ekalinin/sitemap.js) package** ❤️
+- Module based on the awesome **[Sitemap Module for Nuxt.js](https://github.com/nuxt-community/sitemap-module) package**
+- Itself based on the awesome **[sitemap.js](https://github.com/ekalinin/sitemap.js) package**
 - Automatically add the static routes to the sitemap
 - Works with **all modes** (universal, spa, generate)
 - For **Nuxt 1.x** and higher
+- Enables Multiple Sitemaps
 
 ## Setup
 
-- Add the `@nuxtjs/sitemap` dependency with `yarn` or `npm` to your project.
+- Add the `@ax2/sitemap` dependency with `yarn` or `npm` to your project.
 
-- Add `@nuxtjs/sitemap` to the `modules` section of `nuxt.config.js`:
+- Add `@ax2/sitemap` to the `modules` section of `nuxt.config.js`:
 
 ```js
   modules: [
-    '@nuxtjs/sitemap'
+    '@ax2/sitemap'
   ]
 ```
-> **notice:** If you use other modules (eg. `nuxt-i18n`), always declare the sitemap module at end of array (eg. `modules: ['nuxt-i18n', '@nuxtjs/sitemap']`)
+> **notice:** If you use other modules (eg. `nuxt-i18n`), always declare the sitemap module at end of array (eg. `modules: ['nuxt-i18n', '@ax2/sitemap']`)
 
 - Configure it for a single sitemap:
 
 ```js
 {
   modules: [
-    '@nuxtjs/sitemap'
+    '@ax2/sitemap'
   ],
   sitemap: {
     hostname: 'https://example.com',
@@ -56,12 +58,13 @@
   }
 ```
 
-- Or configure it for a several sitemaps: (adding the path for each one)
+- Or configure it for a several sitemaps:
+You need different pathnames for each sitemap.
 
 ```js
 {
   modules: [
-    '@nuxtjs/sitemap'
+    '@ax2/sitemap'
   ],
   sitemap: [
     {
