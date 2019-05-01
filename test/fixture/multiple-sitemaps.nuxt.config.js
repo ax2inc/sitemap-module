@@ -10,24 +10,39 @@ module.exports = {
   modules: ['@@'],
   sitemap: [
     {
-      path: 'sitemap.xml',
-      hostname: 'http://localhost:3000/',
-      generate: true,
+      exclude: [
+        '/exclude'
+      ],
       gzip: true,
+      hostname: 'http://localhost:3000/',
       routes: [
-        '/page/1',
-        '/page/2'
-      ]
+        '/1',
+        'child/1'
+      ],
+      filter: ({ routes }) =>
+        routes.filter(route => route.url !== '/filtered'),
+      defaults: {
+        changefreq: 'daily',
+        priority: 1
+      }
     },
     {
       path: 'second-sitemap.xml',
-      hostname: 'http://localhost:3000/',
-      generate: true,
+      exclude: [
+        '/exclude'
+      ],
       gzip: true,
+      hostname: 'http://localhost:3000/',
       routes: [
-        '/page/3',
-        '/page/4'
-      ]
+        '/2',
+        'child/2'
+      ],
+      filter: ({ routes }) =>
+        routes.filter(route => route.url !== '/filtered'),
+      defaults: {
+        changefreq: 'daily',
+        priority: 1
+      }
     }
   ]
 }
