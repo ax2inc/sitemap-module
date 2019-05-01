@@ -1,0 +1,48 @@
+const { resolve } = require('path')
+
+module.exports = {
+  rootDir: resolve(__dirname, '../..'),
+  srcDir: __dirname,
+  dev: false,
+  render: {
+    resourceHints: false
+  },
+  modules: ['@@'],
+  sitemap: [
+    {
+      exclude: [
+        '/exclude'
+      ],
+      gzip: true,
+      hostname: 'http://localhost:3000/',
+      routes: [
+        '/1',
+        'child/1'
+      ],
+      filter: ({ routes }) =>
+        routes.filter(route => route.url !== '/filtered'),
+      defaults: {
+        changefreq: 'daily',
+        priority: 1
+      }
+    },
+    {
+      path: 'second-sitemap.xml',
+      exclude: [
+        '/exclude'
+      ],
+      gzip: true,
+      hostname: 'http://localhost:3000/',
+      routes: [
+        '/2',
+        'child/2'
+      ],
+      filter: ({ routes }) =>
+        routes.filter(route => route.url !== '/filtered'),
+      defaults: {
+        changefreq: 'daily',
+        priority: 1
+      }
+    }
+  ]
+}
